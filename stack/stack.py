@@ -51,28 +51,24 @@ class Stack:
         return count
         
     def push(self, value):
-        new_node = Node(value, None);
+        new_node = Node(value, None)
         #check if head is empty
         if not self.head:
-            self.head = new_node;
+            self.head = new_node
         else:
             head = self.head;
             new_node.next_node = self.head
             self.head = new_node
+    
+    def pop(self):
+        if not self.head:
+            return None
+        else:
+            current_head = self.head
+            self.head = current_head.next_node
+            current_head.next_node = None
+            return current_head.value
             
     def __str__(self):
-        return f"{self.head} {self.head.next_node}"
+        return f"{self.head.value}"
     
-test_node =  Node(1, None);
-
-
-
-new_stack = Stack();
-
-new_stack.push(1);
-print(new_stack);
-new_stack.push(2)
-print(new_stack)
-new_stack.push(3)
-print(new_stack)
-print(new_stack.__len__())
