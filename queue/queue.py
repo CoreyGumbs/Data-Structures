@@ -68,9 +68,18 @@ class Queue:
             current_node = self.head
             while(current_node.next_node is not None):
                 current_node = current_node.next_node
-            current_node.next_node =  new_node
-                
+            current_node.next_node = new_node
     
+    def dequeue(self):
+        if not self.head:
+            return None
+        else: 
+            value = self.head.value
+            self.head = self.head.next_node
+            return value
+                
+    def __str__(self):
+        return f"{self.head.value}"
             
 
 
@@ -78,4 +87,8 @@ q = Queue()
 q.enqueue(1)
 q.enqueue(2)
 q.enqueue(3)
+q.dequeue()
+
+
+
 print(q.len())
