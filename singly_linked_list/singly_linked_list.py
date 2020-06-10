@@ -28,9 +28,18 @@ class LinkedList:
             self.tail.set_next_node(new_node)
             self.tail = new_node
             
-            
-    def remove_tail(self):
-        pass
+    def remove_head(self):
+        if not self.head:
+            return None
+        
+        if not self.head.get_next():
+            head = self.head
+            self.head = None
+            self.tail = None
+            return head.get_value()
+        value = self.head.get_value()
+        self.head = self.head.get_next()
+        return value
     
     def contains(self, value):
         if not self.head:
