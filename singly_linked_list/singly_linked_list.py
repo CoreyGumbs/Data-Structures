@@ -12,7 +12,6 @@ class Node:
     def set_next_node(self, new_next):
         self.next_node = new_next
     
-    
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -53,4 +52,15 @@ class LinkedList:
         return False
     
     def get_max(self):
-        pass
+        if not self.head:
+            return None
+
+        max =  self.head.get_value()
+        current = self.head.get_next()
+        
+        while current:
+            if current.get_value() > max:
+                max = current.get_value()
+            current = current.get_next()
+        
+        return max
