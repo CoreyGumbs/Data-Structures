@@ -12,17 +12,70 @@ return elements in First In First Out order.
    
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
-"""
+""" 
+
+# class Queue:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = []
+    
+#     def __len__(self):
+#         return len(self.storage);
+    
+#     def enqueue(self, value):
+#         return self.storage.insert(0, value);
+    
+#     def dequeue(self):
+#         if not self.storage:
+#             return None
+#         else:
+#             return self.storage.pop();
+        
+        
+class Node:
+    def __init__(self, value, next_node):
+        self.value = value
+        self.next_node =  next_node
+        
+    def get_value(self):
+        return self.value
+    
+    def get_next_node(self):
+        return self.next_node
+        
+    def set_next_node(self, new_node):
+        self.next_node = new_node
+        
+
 class Queue:
     def __init__(self):
-        self.size = 0
-        # self.storage = ?
+        self.head = None
+        
+    def len(self):
+        count = 0
+        current_head = self.head
+        while(current_head):
+            count +=1
+            current_head = current_head.next_node 
+        return count
     
-    def __len__(self):
-        pass
-
     def enqueue(self, value):
-        pass
+        new_node = Node(value, None);
+        
+        if not self.head:
+            self.head = new_node;
+        else:
+            current_node = self.head
+            while(current_node.next_node is not None):
+                current_node = current_node.next_node
+            current_node.next_node =  new_node
+                
+    
+            
 
-    def dequeue(self):
-        pass
+
+q = Queue()
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
+print(q.len())
